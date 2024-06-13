@@ -12,9 +12,11 @@
         "symfony/flex": "^1.17|^2",
         "symfony/framework-bundle": "6.4.*",
         "symfony/runtime": "6.4.*",
+        "symfony/security-bundle": "6.4.*",
         "symfony/yaml": "6.4.*"
     },
     "require-dev": {
+        "symfony/maker-bundle": "^1.60",
         "symfony/phpunit-bridge": "^7.1"
     },
     "config": {
