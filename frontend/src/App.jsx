@@ -21,7 +21,7 @@ function App() {
     const apiUrl = `${API_HOST}/api/javascript_code/run`;
     try {
       const codeOutPut = await sendPostRequest(apiUrl, {
-        javascript: 'js',
+        language: 'javascript',
         code: currentCode
       });
 
