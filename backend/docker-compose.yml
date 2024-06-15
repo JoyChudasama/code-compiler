@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   node-service:
-    container_name: node-service
+    container_name: js-code-execution-service
     build: ./docker/node-env
     volumes:
       - ./docker/node-env:/app

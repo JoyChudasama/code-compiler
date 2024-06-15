@@ -2,11 +2,15 @@ const http = require('http');
 const { exec } = require('child_process');
 
 const server = http.createServer((req, res) => {
+
     if (req.method === 'POST' && req.url === '/run') {
+        
         let body = '';
+        
         req.on('data', chunk => {
-            body += chunk.toString(); // convert Buffer to string
+            body += chunk.toString(); 
         });
+
         req.on('end', () => {
             const data = JSON.parse(body);
             const script = data.code;
@@ -27,6 +31,7 @@ const server = http.createServer((req, res) => {
                 res.end(stdout);
             });
         });
+        
     } else {
         res.writeHead(404);
         res.end('Endpoint Not Found');

@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
@@ -20,12 +19,15 @@ class JavascriptCodeController extends AbstractController
         $code = $requestBody['code'];
 
         try {
-            $response = $httpClientInterface->request('POST', 'http://node-service-1:3000/run', [
+            
+            $response = $httpClientInterface->request('POST', 'http://127.0.0.1:3000/run', [
                 'json' => ['code' => $code]
             ]);
 
             $output = $response->getContent();
-            return $this->json(['output' => $output]);
+
+            return $this->json(['data' => $output]);
+        
         } catch (\Exception $e) {
             return $this->json(['error' => $e->getMessage()], 500);
         }
