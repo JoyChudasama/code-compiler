@@ -28,11 +28,11 @@ function App() {
         language: 'javascript',
         code: currentCode
       });
+
       terminalOutPut.current.innerHTML = codeOutPut.data
 
     } catch (error) {
       terminalOutPut.current.innerHTML = error
-      console.error(error);
     }
 
     runButton.current.removeAttribute('disabled')
@@ -52,7 +52,7 @@ function App() {
         onMount={handleEditorDidMount}
       />
 
-      <div ref={terminalOutPut} style={{ whiteSpace: 'pre-wrap', background: '#f4f4f4', padding: '10px', borderRadius: '5px', maxHeight: '20vh', overflow: 'auto', marginTop: '1rem', border: '1px solid black' }}>
+      <div ref={terminalOutPut} style={{ whiteSpace: 'pre-wrap', background: '#f4f4f4', padding: '10px', borderRadius: '5px', minHeight: '20vh', maxHeight: '20vh', overflow: 'auto', marginTop: '1rem', border: '1px solid black' }}>
       </div>
     </>
   );
