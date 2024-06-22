@@ -13,23 +13,21 @@ class JavascriptCodeController extends AbstractController
 {
 
     #[Route('/run', name: 'app_api_javascript_code_run', methods: ['GET', 'POST'])]
-    public function run(Request $request, HttpClientInterface $httpClientInterface): JsonResponse
+    public function run(Request $request, HttpClientInterface $httpClientInterface, string $jsDockerServiceHost): JsonResponse
     {
         $requestBody = $request->toArray();
         $code = $requestBody['code'];
-
+        $url = $jsDockerServiceHost . '/run';
         try {
-            
-            $response = $httpClientInterface->request('POST', 'http://127.0.0.1:3000/run', [
+
+            $response = $httpClientInterface->request('POST', $url, [
                 'json' => ['code' => $code]
             ]);
 
             $output = $response->getContent();
-
             return $this->json(['data' => $output]);
-        
         } catch (\Exception $e) {
-            return $this->json(['error' => $e->getMessage()], 500);
+            return $this->json("Oopss...Something went wrong!!!", 500);
         }
 
 
